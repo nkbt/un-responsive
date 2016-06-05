@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Appear, BlockQuote, Cite, CodePane, Deck, Fill, Heading, Image, Layout, Link,
+  Appear, BlockQuote, Cite, CodePane, Deck, Fill, Heading, Image, Layout, Link as SpectacleLink,
   ListItem, List, Markdown, Quote, Slide, Spectacle, Text
 } from "spectacle";
 
@@ -9,10 +9,19 @@ import Frame from "../components/Frame";
 
 import preloader from "spectacle/lib/utils/preloader";
 import createTheme from "spectacle/lib/themes/default";
+import CodeSlide from "spectacle-code-slide";
 
 
 require("normalize.css");
 require("spectacle/lib/themes/default/index.css");
+require("./prezo.css");
+
+
+const Link = ({...props}) => <SpectacleLink
+  style={{whiteSpace: 'nowrap'}}
+  padding="20px"
+  textColor="#016"
+  {...props} />;
 
 
 const palette = [
@@ -39,8 +48,12 @@ const palette = [
 ];
 
 const theme = createTheme(palette.reduce((result, color, i) => ({...result, [`c${i}`]: color}), {
-  primary: "#40e5ff"
-}));
+  primary: "#40e5ff",
+  tertiary: "black",
+  quartenary: "black"
+}), {
+  primary: 'Helvetica Neue, Helvetica, Arial, sans-serif'
+});
 
 
 const images = {
@@ -48,7 +61,8 @@ const images = {
 };
 
 const code = {
-//  someCode: require("raw!../assets/someCode.example"),
+  helloWorld: require("raw!../code/helloWorld.js"),
+  somethingUseful: require("raw!../code/somethingUseful.js")
 };
 
 preloader(images);
@@ -62,6 +76,10 @@ const getColor = (() => {
   }
 })();
 
+//const shadow = {
+//  textShadow: '0.5px 0.5px 1px rgba(0, 0, 0, 0.3)'
+//};
+
 
 export default class Presentation extends React.Component {
   render() {
@@ -69,32 +87,72 @@ export default class Presentation extends React.Component {
       <Spectacle theme={theme}>
         <Deck transition={["fade"]} transitionDuration={500} progress="bar">
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Un-Responsive
+            <Heading fit caps lineHeight={2}>
+              Un.Responsive
             </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+
+            <Text>
+              Animated responsive universal JS layout
+            </Text>
+
+            <Text margin="100px 0 0 0" textSize="1.5em" bold>Nik Butenko</Text>
+            <Text bold>
+              <Link href="https://twitter.com/nkbtnk">@nkbtnk</Link>
+              <Link padding="20px" textColor="#016"
+                href="https://github.com/nkbt">github.com/nkbt</Link>
+            </Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Let's start from scratch
+            </Heading>
+            <Text margin="100px 0 0 0">
+              Example is built on top of
+              <Link padding="20px" textColor="#016"
+                href="github.com:mz026/universal-redux-template.git">
+                universal-redux-template
+              </Link>
+            </Text>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.helloWorld}
+            ranges={[
+              { loc: [6, 9], title: "Hello World" }
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3001" />
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
+            <Heading fit>
+              Add something useful
             </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+            <Text margin="100px 0 0 0">
+              sort of
+            </Text>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.somethingUseful}
+            ranges={[
+              { loc: [0, 47], title: 'Responsive.js' },
+              { loc: [11, 16] },
+              { loc: [28, 37] },
+              { loc: [38, 40] }
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3002/responsive" />
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -102,10 +160,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -113,10 +167,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -124,10 +174,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -135,10 +181,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -146,10 +188,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -157,22 +195,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
-          </Slide>
-          <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
-          </Slide>
-          <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
         </Deck>
       </Spectacle>
