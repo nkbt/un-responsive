@@ -70,56 +70,92 @@ export default class Presentation extends React.Component {
         <Deck transition={["fade"]} transitionDuration={500} progress="bar">
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
+              Un-Responsive
+            </Heading>
+            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3001" />
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
-            <Frame port={3001} />
+            <Frame url="http://localhost:3002/responsive" />
           </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3004/responsive" />
+          </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3004/responsive" />
+          </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3005/responsive" />
+          </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3006/responsive" />
+          </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3007/responsive" />
+          </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1
             </Heading>
             <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
           </Slide>
+
           <Slide bgColor={getColor()}>
-            <Heading size={1} fit caps lineHeight={1} textColor="black">
-              Spectacle 1
-            </Heading>
-            <Text textSize="1.5em" margin="20px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+            <Frame url="http://localhost:3008/responsive" />
           </Slide>
+
           <Slide bgColor={getColor()}>
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               Spectacle 1

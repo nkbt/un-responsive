@@ -3,9 +3,9 @@ import {shouldComponentUpdate} from 'react-addons-pure-render-mixin';
 import {Motion, spring} from 'react-motion';
 
 
-const Iframe = ({width, port, query = ''}) => (
+const Iframe = ({width, url, query = ''}) => (
   <iframe
-    src={`http://localhost:${port}/responsive${query}`}
+    src={`${url}${query}`}
     width={width}
     height={600}
     style={{marginTop: 20, border: '1px solid #000', background: '#fff'}}/>
@@ -14,7 +14,7 @@ const Iframe = ({width, port, query = ''}) => (
 
 const Cached = React.createClass({
   propTypes: {
-    port: React.PropTypes.number.isRequired
+    url: React.PropTypes.string.isRequired
   },
 
 
@@ -30,7 +30,7 @@ const Cached = React.createClass({
 
 
   render() {
-    const {port} = this.props;
+    const {url} = this.props;
     const {reload, isSmall} = this.state;
     const w = isSmall ? 768 : 1024;
 
@@ -42,9 +42,9 @@ const Cached = React.createClass({
         <button onClick={() => this.setState({isSmall: false, reload: true})}>Large (r)</button>
         <br />
         {reload ?
-          <Iframe width={w} port={port} query={isSmall ? '?s' : '?l'} /> : (
+          <Iframe width={w} url={url} query={isSmall ? '?s' : '?l'} /> : (
           <Motion style={{width: spring(w)}}>
-            {({width}) => <Iframe width={width} port={port} />}
+            {({width}) => <Iframe width={width} url={url} />}
           </Motion>
         )}
       </div>
@@ -56,8 +56,8 @@ const Frame = React.createClass({
   shouldComponentUpdate,
 
   render() {
-    const {port} = this.props;
-    return <Cached port={port} />;
+    const {url} = this.props;
+    return <Cached url={url} />;
   }
 });
 
