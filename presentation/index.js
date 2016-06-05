@@ -62,7 +62,9 @@ const images = {
 
 const code = {
   helloWorld: require("raw!../code/helloWorld.js"),
-  somethingUseful: require("raw!../code/somethingUseful.js")
+  somethingUseful: require("raw!../code/somethingUseful.js"),
+  windowSizeReducer: require("raw!../code/windowSizeReducer.js"),
+  windowSizeListener: require("raw!../code/windowSizeListener.js")
 };
 
 preloader(images);
@@ -153,7 +155,41 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Add window size reducer
+            </Heading>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.windowSizeReducer}
+            ranges={[
+              { loc: [-1, 0], title: 'reducer' },
+              { loc: [3, 8] },
+              { loc: [15, 23] }
+            ]} />
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              ...and window resize listener
+            </Heading>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.windowSizeListener}
+            ranges={[
+              { loc: [-1, 0], title: 'listener' },
+              { loc: [3, 8] },
+              { loc: [14, 15] },
+              { loc: [21, 25] },
+              { loc: [32, 34] },
+              { loc: [36, 40] },
+
+
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3004/responsive" />
