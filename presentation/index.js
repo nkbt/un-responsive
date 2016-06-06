@@ -56,7 +56,8 @@ const theme = createTheme(palette.reduce((result, color, i) => ({...result, [`c$
 
 
 const images = {
-   markupMismatch: require("../assets/markupMismatch.png")
+  markupMismatch: require("../assets/markupMismatch.png"),
+  markupMatchedOk: require("../assets/markupMatchedOk.png")
 };
 
 const code = {
@@ -67,7 +68,8 @@ const code = {
   connect: require("raw!../code/connect.js"),
   beResponsible: require("raw!../code/beResponsible.js"),
   useIsInitial: require("raw!../code/useIsInitial.js"),
-  markupMismatch: require("raw!../code/markupMismatch.txt")
+  markupMismatch: require("raw!../code/markupMismatch.txt"),
+  appWithComponentDidMount: require("raw!../code/appWithComponentDidMount.js")
 };
 
 preloader(images);
@@ -306,13 +308,44 @@ export default class Presentation extends React.Component {
               { loc: [25, 27] }
             ]} />
 
-          
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              ┬──┬ ノ( ゜-゜ノ)
+            </Heading>
+            <Text margin="100px 0 0 0">
+              <code style={{textDecoration: 'line-through'}}>componentWillMount</code>
+            </Text>
+            <Text margin="100px 0 0 0" bold>
+              <code>componentDidMount</code>
+            </Text>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.appWithComponentDidMount}
+            ranges={[
+              { loc: [-1, 0], title: 'Client App' },
+              { loc: [18, 24] },
+              { loc: [25, 27] },
+              { loc: [30, 32] },
+              { loc: [35, 40] },
+              { loc: [45, 47] }
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3006/responsive" />
           </Slide>
 
+          <ImageSlide bgImage={images.markupMatchedOk} />
+
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Yay! <code>\o/</code>
+            </Heading>
+            <Text margin="100px 0 0 0">
+              ...animate it please!
+            </Text>
           </Slide>
 
           <Slide bgColor={getColor()}>

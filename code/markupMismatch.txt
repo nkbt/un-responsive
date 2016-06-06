@@ -23,5 +23,5 @@ different on the client or server:
 (server) ...> -1 </...
 
 
-(client) <p>Window width <b>766</b></p>
-(server) <p>Window width <b>-1</b></p>
+(client) Window width 766
+(server) Window width -1
