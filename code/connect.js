@@ -56,5 +56,6 @@ const mapStateToProps = ({
   isSmall
 });
 
-export default connect(mapStateToProps)
-(Responsive);
+export default connect(
+  mapStateToProps
+)(Responsive);

@@ -35,15 +35,13 @@ const palette = [
   '#35a951',
   '#d6e64a',
   '#20b4e5',
-  '#c558b3',
   '#9a6446',
   '#7a5eb0',
   '#8fd5ed',
   '#fd8242',
   '#c5cbfc',
   '#fee635',
-  '#147abd',
-  '#40e5ff'
+  '#147abd'
 ];
 
 const theme = createTheme(palette.reduce((result, color, i) => ({...result, [`c${i}`]: color}), {
@@ -70,7 +68,9 @@ const code = {
   useIsInitial: require("raw!../code/useIsInitial.js"),
   markupMismatch: require("raw!../code/markupMismatch.txt"),
   appWithComponentDidMount: require("raw!../code/appWithComponentDidMount.js"),
-  animatePlease: require("raw!../code/animatePlease.js")
+  animatePlease: require("raw!../code/animatePlease.js"),
+  allFixedAnimationSkipper: require("raw!../code/allFixedAnimationSkipper.js"),
+  allFixedResponsiveComponent: require("raw!../code/allFixedResponsiveComponent.js")
 };
 
 preloader(images);
@@ -79,7 +79,7 @@ preloader(images);
 const getColor = (() => {
   let n = 0;
   return () => {
-    n = (n + 1) % 18;
+    n = (n + 1) % 16;
     return `c${n}`;
   }
 })();
@@ -150,7 +150,8 @@ export default class Presentation extends React.Component {
             lang="js"
             code={code.somethingUseful}
             ranges={[
-              { loc: [0, 47], title: 'Eventually responsive.js' },
+              { loc: [-1, 0], title: 'Eventually responsive.js' },
+              { loc: [3, 7] },
               { loc: [11, 16] },
               { loc: [28, 37] },
               { loc: [38, 40] }
@@ -164,6 +165,9 @@ export default class Presentation extends React.Component {
             <Heading fit>
               Add window size reducer
             </Heading>
+            <Text margin="100px 0 0 0">
+              because everything is better with reducer
+            </Text>
           </Slide>
 
           <CodeSlide
@@ -211,7 +215,7 @@ export default class Presentation extends React.Component {
               { loc: [23, 25] },
               { loc: [31, 33] },
               { loc: [41, 44] },
-              { loc: [51, 60] }
+              { loc: [51, 61] }
             ]} />
 
           <Slide bgColor={getColor()}>
@@ -283,7 +287,7 @@ export default class Presentation extends React.Component {
               Looks good!
             </Heading>
             <Text margin="100px 0 0 0">
-              Oh, I accidentally opened console...
+              Until we've accidentally opened console...
             </Text>
           </Slide>
 
@@ -291,7 +295,7 @@ export default class Presentation extends React.Component {
             <Heading fit>
               (┛◉Д◉)┛彡┻━┻
             </Heading>
-            <Text margin="100px 0 0 0">
+            <Text margin="100px 0 0 0" bold>
               WARNING: React attempted to reuse markup...
             </Text>
           </Slide>
@@ -307,8 +311,18 @@ export default class Presentation extends React.Component {
               { loc: [6, 9] },
               { loc: [17, 19] },
               { loc: [21, 23] },
-              { loc: [25, 27] }
+              { loc: [25, 27], note: 'actually...' }
             ]} />
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Makes sense
+            </Heading>
+            <Text margin="100px 0 0 0">
+              Server has no idea about my screen size
+            </Text>
+          </Slide>
+
 
           <Slide bgColor={getColor()}>
             <Heading fit>
@@ -343,7 +357,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              Yay! <code>\o/</code>
+              \o/
             </Heading>
             <Text margin="100px 0 0 0">
               ...animate it please!
@@ -355,9 +369,8 @@ export default class Presentation extends React.Component {
             lang="js"
             code={code.animatePlease}
             ranges={[
-              { loc: [2, 3], title: 'React-Motion' },
-              { loc: [42, 48] },
-              { loc: [12, 17] }
+              { loc: [2, 3], note: 'Add react-motion' },
+              { loc: [42, 48] }
             ]} />
 
           <Slide bgColor={getColor()}>
@@ -375,7 +388,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              ┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻
+              ┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻
             </Heading>
             <Text margin="100px 0 0 0">
               It should not slide in when first loaded!
@@ -388,7 +401,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              ┬──┬﻿ ¯\_(ツ)
+              ┬──┬ ¯\_(ツ)
             </Heading>
             <Text margin="100px 0 0 0">
               We need to skip animation for first load
@@ -400,6 +413,58 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Create <code>responsive</code> container
+            </Heading>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.allFixedAnimationSkipper}
+            ranges={[
+              { loc: [-1, 0], title: 'Responsive container' },
+              { loc: [81, 84] },
+              { loc: [94, 98] },
+              { loc: [13, 14], note: "Wrapper" },
+              { loc: [28, 32]},
+              { loc: [39, 47]},
+              { loc: [63, 69]},
+              { loc: [6, 11], note: "Maybe spring"}
+            ]} />
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Update <code>Responsive</code> component
+            </Heading>
+          </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.allFixedResponsiveComponent}
+            ranges={[
+              { loc: [7, 9], note: 'Remove isInitial and use maybeSpring' },
+              { loc: [14, 17], note: 'Set default state, no extra logic anymore' },
+              { loc: [41, 44], note: 'Use provided maybeSpring' },
+              { loc: [69, 77] }
+            ]} />
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3008/responsive" />
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Thanks!
+            </Heading>
+
+            <Text margin="100px 0 0 0" textSize="1.5em" bold>Nik Butenko</Text>
+            <Text bold>
+              <Link href="https://twitter.com/nkbtnk">@nkbtnk</Link>
+              <Link padding="20px" textColor="#016"
+                href="https://github.com/nkbt">github.com/nkbt</Link>
+            </Text>
           </Slide>
         </Deck>
       </Spectacle>
