@@ -3,6 +3,12 @@ body {
   /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;*/
 }
 
+code {
+  border-radius: 0.2em;
+  padding: 0.1em 0.3em;
+  box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
 
 /*
 .spectacle-presenter > div:nth-child(1) {

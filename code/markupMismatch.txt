@@ -1,0 +1,27 @@
+VM4695:44 Warning: React attempted
+to reuse markup in a container
+but the checksum was invalid.
+
+This generally means that you are
+using server rendering and the
+markup generated on the server
+was not what the client was
+expecting. React injected new
+markup to compensate which works
+but you have lost many of the
+benefits of server rendering.
+Instead, figure out why the
+markup being generated is
+different on the client or server:
+
+
+(client) b data-reactid="13">766</b></
+(server) b data-reactid="13">-1</b></p
+
+
+(client) ...> 766 </...
+(server) ...> -1 </...
+
+
+(client) <p>Window width <b>766</b></p>
+(server) <p>Window width <b>-1</b></p>

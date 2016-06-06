@@ -5,6 +5,7 @@ import {
 } from "spectacle";
 
 import Frame from "../components/Frame";
+import ImageSlide from "../components/image-slide";
 
 
 import preloader from "spectacle/lib/utils/preloader";
@@ -39,12 +40,10 @@ const palette = [
   '#7a5eb0',
   '#8fd5ed',
   '#fd8242',
-  '#c0bebe',
-  '#404aa9',
+  '#c5cbfc',
   '#fee635',
-  '#807f80',
   '#147abd',
-  '#424243'
+  '#40e5ff'
 ];
 
 const theme = createTheme(palette.reduce((result, color, i) => ({...result, [`c${i}`]: color}), {
@@ -57,7 +56,7 @@ const theme = createTheme(palette.reduce((result, color, i) => ({...result, [`c$
 
 
 const images = {
-//   title: require("../assets/title.png")
+   markupMismatch: require("../assets/markupMismatch.png")
 };
 
 const code = {
@@ -67,7 +66,8 @@ const code = {
   windowSizeListener: require("raw!../code/windowSizeListener.js"),
   connect: require("raw!../code/connect.js"),
   beResponsible: require("raw!../code/beResponsible.js"),
-  useIsInitial: require("raw!../code/useIsInitial.js")
+  useIsInitial: require("raw!../code/useIsInitial.js"),
+  markupMismatch: require("raw!../code/markupMismatch.txt")
 };
 
 preloader(images);
@@ -76,7 +76,7 @@ preloader(images);
 const getColor = (() => {
   let n = 0;
   return () => {
-    n = (n + 1) % 20;
+    n = (n + 1) % 18;
     return `c${n}`;
   }
 })();
@@ -97,7 +97,7 @@ export default class Presentation extends React.Component {
             </Heading>
 
             <Text>
-              Animated responsive universal JS layout
+              Animated responsive universal tableflip
             </Text>
 
             <Text margin="100px 0 0 0" textSize="1.5em" bold>Nik Butenko</Text>
@@ -240,14 +240,15 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              Problem.
+              (╯°□°）╯︵ ┻━┻
             </Heading>
             <Text margin="100px 0 0 0">
               Block disappears with delay on small screen
             </Text>
-            <Text bold>
-              not nice =(
-            </Text>
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3004/responsive" />
           </Slide>
 
           <Slide bgColor={getColor()}>
@@ -274,7 +275,38 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Looks good!
+            </Heading>
+            <Text margin="100px 0 0 0">
+              Oh, I accidentally opened console...
+            </Text>
           </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              (┛◉Д◉)┛彡┻━┻
+            </Heading>
+            <Text margin="100px 0 0 0">
+              WARNING: React attempted to reuse markup...
+            </Text>
+          </Slide>
+
+          <ImageSlide bgImage={images.markupMismatch} />
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.markupMismatch}
+            ranges={[
+              { loc: [-1, 3], title: 'Warning' },
+              { loc: [6, 9] },
+              { loc: [17, 19] },
+              { loc: [21, 23] },
+              { loc: [25, 27] }
+            ]} />
+
+          
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3006/responsive" />
