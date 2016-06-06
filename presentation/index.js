@@ -69,7 +69,8 @@ const code = {
   beResponsible: require("raw!../code/beResponsible.js"),
   useIsInitial: require("raw!../code/useIsInitial.js"),
   markupMismatch: require("raw!../code/markupMismatch.txt"),
-  appWithComponentDidMount: require("raw!../code/appWithComponentDidMount.js")
+  appWithComponentDidMount: require("raw!../code/appWithComponentDidMount.js"),
+  animatePlease: require("raw!../code/animatePlease.js")
 };
 
 preloader(images);
@@ -269,7 +270,8 @@ export default class Presentation extends React.Component {
             ranges={[
               { loc: [-1, 0], title: 'Use IsInitial' },
               { loc: [5, 7] },
-              { loc: [12, 17] }
+              { loc: [12, 17] },
+              { loc: [61, 65] }
             ]} />
 
           <Slide bgColor={getColor()}>
@@ -348,11 +350,49 @@ export default class Presentation extends React.Component {
             </Text>
           </Slide>
 
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.animatePlease}
+            ranges={[
+              { loc: [2, 3], title: 'React-Motion' },
+              { loc: [42, 48] },
+              { loc: [12, 17] }
+            ]} />
+
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3007/responsive" />
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Too easy!
+            </Heading>
+            <Text margin="100px 0 0 0">
+              * nope
+            </Text>
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              ┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻
+            </Heading>
+            <Text margin="100px 0 0 0">
+              It should not slide in when first loaded!
+            </Text>
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Frame url="http://localhost:3007/responsive" />
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              ┬──┬﻿ ¯\_(ツ)
+            </Heading>
+            <Text margin="100px 0 0 0">
+              We need to skip animation for first load
+            </Text>
           </Slide>
 
           <Slide bgColor={getColor()}>
