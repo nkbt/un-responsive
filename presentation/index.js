@@ -66,7 +66,8 @@ const code = {
   windowSizeReducer: require("raw!../code/windowSizeReducer.js"),
   windowSizeListener: require("raw!../code/windowSizeListener.js"),
   connect: require("raw!../code/connect.js"),
-  beResponsible: require("raw!../code/beResponsible.js")
+  beResponsible: require("raw!../code/beResponsible.js"),
+  useIsInitial: require("raw!../code/useIsInitial.js")
 };
 
 preloader(images);
@@ -251,9 +252,22 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              Fis it with <code>isInitial</code>
+              Fix it with <code>isInitial</code>
             </Heading>
+            <Text margin="100px 0 0 0">
+              It is <code>true</code> until we know window size
+            </Text>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.useIsInitial}
+            ranges={[
+              { loc: [-1, 0], title: 'Use IsInitial' },
+              { loc: [5, 7] },
+              { loc: [12, 17] }
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3005/responsive" />

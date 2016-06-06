@@ -57,4 +57,4 @@ const mapStateToProps = ({
 });
 
 export default connect(mapStateToProps)
-  (Responsive);
+(Responsive);
