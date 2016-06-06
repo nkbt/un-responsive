@@ -120,7 +120,10 @@ export default class Presentation extends React.Component {
               <Link padding="20px" textColor="#016"
                 href="github.com:mz026/universal-redux-template.git">
                 universal-redux-template
-              </Link>
+              </Link>*
+            </Text>
+            <Text margin="100px 0 0 0" italic textSize="90%">
+              * do not use boilerplates
             </Text>
           </Slide>
 
@@ -140,9 +143,6 @@ export default class Presentation extends React.Component {
             <Heading fit>
               Add something useful
             </Heading>
-            <Text margin="100px 0 0 0">
-              sort of
-            </Text>
           </Slide>
 
           <CodeSlide
@@ -163,10 +163,10 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              Add window size reducer
+              Add window size reducer *
             </Heading>
-            <Text margin="100px 0 0 0">
-              because everything is better with reducer
+            <Text margin="100px 0 0 0" italic textSize="90%">
+              * because everything is better with reducer
             </Text>
           </Slide>
 
@@ -247,7 +247,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              (╯°□°）╯︵ ┻━┻
+              (ノ｀´)ノ ~┻━┻
             </Heading>
             <Text margin="100px 0 0 0">
               Block disappears with delay on small screen
@@ -293,7 +293,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              (┛◉Д◉)┛彡┻━┻
+              (╯°□°）╯︵ ┻━┻
             </Heading>
             <Text margin="100px 0 0 0" bold>
               WARNING: React attempted to reuse markup...
@@ -388,7 +388,7 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Heading fit>
-              ┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻
+              (┛◉Д◉)┛彡┻━┻
             </Heading>
             <Text margin="100px 0 0 0">
               It should not slide in when first loaded!
@@ -452,6 +452,12 @@ export default class Presentation extends React.Component {
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3008/responsive" />
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              /ᐠ ._. ᐟ\ﾉ
+            </Heading>
           </Slide>
 
           <Slide bgColor={getColor()}>
