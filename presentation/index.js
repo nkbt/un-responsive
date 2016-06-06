@@ -64,7 +64,9 @@ const code = {
   helloWorld: require("raw!../code/helloWorld.js"),
   somethingUseful: require("raw!../code/somethingUseful.js"),
   windowSizeReducer: require("raw!../code/windowSizeReducer.js"),
-  windowSizeListener: require("raw!../code/windowSizeListener.js")
+  windowSizeListener: require("raw!../code/windowSizeListener.js"),
+  connect: require("raw!../code/connect.js"),
+  beResponsible: require("raw!../code/beResponsible.js")
 };
 
 preloader(images);
@@ -144,7 +146,7 @@ export default class Presentation extends React.Component {
             lang="js"
             code={code.somethingUseful}
             ranges={[
-              { loc: [0, 47], title: 'Responsive.js' },
+              { loc: [0, 47], title: 'Eventually responsive.js' },
               { loc: [11, 16] },
               { loc: [28, 37] },
               { loc: [38, 40] }
@@ -186,9 +188,26 @@ export default class Presentation extends React.Component {
               { loc: [14, 15] },
               { loc: [21, 25] },
               { loc: [32, 34] },
-              { loc: [36, 40] },
+              { loc: [36, 40] }
+            ]} />
 
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Connect!
+            </Heading>
+          </Slide>
 
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.connect}
+            ranges={[
+              { loc: [1, 2]},
+              { loc: [4, 9]},
+              { loc: [23, 25] },
+              { loc: [31, 33] },
+              { loc: [41, 44] },
+              { loc: [51, 60] }
             ]} />
 
           <Slide bgColor={getColor()}>
@@ -196,13 +215,44 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Show block responsibly
+            </Heading>
+            <Text margin="100px 0 0 0">
+              Hide by default on small screen
+            </Text>
           </Slide>
+
+          <CodeSlide
+            transition={[]}
+            lang="js"
+            code={code.beResponsible}
+            ranges={[
+              { loc: [-1, 0], title: 'Be responsible' },
+              { loc: [11, 14] },
+              { loc: [18, 21] }
+            ]} />
 
           <Slide bgColor={getColor()}>
             <Frame url="http://localhost:3004/responsive" />
           </Slide>
 
           <Slide bgColor={getColor()}>
+            <Heading fit>
+              Problem.
+            </Heading>
+            <Text margin="100px 0 0 0">
+              Block disappears with delay on small screen
+            </Text>
+            <Text bold>
+              not nice =(
+            </Text>
+          </Slide>
+
+          <Slide bgColor={getColor()}>
+            <Heading fit>
+              Fis it with <code>isInitial</code>
+            </Heading>
           </Slide>
 
           <Slide bgColor={getColor()}>
